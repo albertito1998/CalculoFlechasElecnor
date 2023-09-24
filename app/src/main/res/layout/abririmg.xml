@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <Button android:id="@+id/cmdVolver" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cerrar" android:layout_x="126dp" android:layout_y="360dp" style="?android:attr/buttonStyleSmall"/>
+    <ImageView android:id="@+id/imgAyuda" android:layout_width="320dp" android:layout_height="344dp" android:src="@drawable/ic_action_search" android:layout_x="1dp" android:layout_y="1dp"/>
+</AbsoluteLayout>

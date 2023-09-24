@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">CalculoFlechasElecnor</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="terminos_y_condiciones">
+      Términos y Condiciones de Uso de la Aplicación
+
+    Fecha de entrada en vigencia: [Fecha]
+
+    A. Introducción
+
+    1. Estos Términos y Condiciones de Uso ("Términos") son un acuerdo legal entre el usuario ("Usuario") y [Nombre de la Empresa], una empresa registrada en España, con su sede principal en [Dirección].
+
+    B. Uso Adecuado de la Aplicación
+
+    1. El Usuario acepta utilizar esta aplicación únicamente con fines técnicos y relacionados con los servicios proporcionados por Elecnor.
+
+    2. El Usuario se compromete a no utilizar la aplicación para actividades ilegales o contrarias a las leyes y regulaciones aplicables en España.
+
+    C. Protección de Datos y Privacidad
+
+    1. Elecnor se compromete a proteger la privacidad del Usuario y a cumplir con todas las regulaciones de protección de datos aplicables en España.
+
+    2. Los datos personales proporcionados por el Usuario se recopilan y utilizan de acuerdo con nuestra Política de Privacidad.
+
+    D. Responsabilidades de la Empresa Elecnor
+
+    1. Elecnor se esfuerza por proporcionar información precisa y actualizada en la aplicación, pero no garantiza la precisión ni la disponibilidad constante de la misma.
+
+    2. La aplicación puede contener enlaces a sitios web externos; Elecnor no se hace responsable del contenido de estos sitios.
+
+    E. Derechos de Propiedad Intelectual
+
+    1. Todos los derechos de propiedad intelectual de la aplicación y su contenido son propiedad exclusiva de Elecnor.
+
+    2. El Usuario no tiene permiso para copiar, modificar o distribuir el contenido de la aplicación sin autorización.
+
+    F. Cambios en los Términos y Condiciones
+
+    1. Elecnor se reserva el derecho de modificar estos Términos en cualquier momento. Los cambios se publicarán en la aplicación.
+
+    G. Contacto
+
+    1. Para cualquier pregunta o comentario sobre estos Términos, el Usuario puede ponerse en contacto con [Nombre de Contacto] en [Dirección de Contacto].
+
+    H. Aceptación de los Términos
+
+    1. Al utilizar esta aplicación, el Usuario acepta estos Términos y Condiciones de Uso.
+
+    Última actualización: [Fecha de Actualización]
+</string>
+    <string name="t_rminos_y_condiciones">Términos y condiciones</string>
+
+</resources>

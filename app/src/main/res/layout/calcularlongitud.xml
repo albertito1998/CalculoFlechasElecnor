@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:layout_x="-9dp"
+        android:layout_y="2dp"
+        android:src="@drawable/logotess" />
+
+    <TextView
+        android:id="@+id/Lbempresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_x="90dp"
+        android:layout_y="14dp"
+        android:text="ELECNOR PROYECTOS Y SERVICIOS" />
+    <TextView android:textStyle="bold" android:id="@+id/LbTitulo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CALCULAR LONGITUD" android:scrollHorizontally="false" android:layout_x="89dp" android:layout_y="46dp"/>
+    <TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Altura:" android:layout_x="12dp" android:layout_y="146dp"/>
+    <TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Ángulo parte inferior:" android:layout_x="12dp" android:layout_y="262dp"/>
+    <TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Ángulo parte superior:" android:layout_x="12dp" android:layout_y="204dp"/>
+    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Introduzca los siguientes datos:" android:layout_x="9dp" android:layout_y="100dp"/>
+    <EditText android:textSize="10dp" android:id="@+id/txtAltura" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="140dp" android:inputType="numberDecimal"/>
+    <EditText android:textSize="10dp" android:id="@+id/txtAnguloSup" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="198dp" android:inputType="numberDecimal"/>
+    <EditText android:textSize="10dp" android:id="@+id/txtAnguloInf" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="256dp" android:inputType="numberDecimal"/>
+    <TextView android:id="@+id/txtError1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="149dp"/>
+    <TextView android:id="@+id/txtError2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="207dp"/>
+    <TextView android:id="@+id/txtError3" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="265dp"/>
+    <Button android:id="@+id/cmdVolver" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Volver" android:layout_x="248dp" android:layout_y="379dp" style="?android:attr/buttonStyleSmall"/>
+    <Button android:id="@+id/cmdComprobar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Comprobar" android:layout_x="109dp" android:layout_y="319dp" style="?android:attr/buttonStyleSmall"/>
+    <TextView android:id="@+id/txtLongitudMedida" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Longitud Medida:" android:layout_x="17dp" android:layout_y="391dp"/>
+    <TextView android:id="@+id/txtMensajeError" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(*) Falta" android:layout_x="252dp" android:layout_y="306dp"/>
+    <Button android:textSize="8dp" android:id="@+id/cmdVaciar" android:layout_width="wrap_content" android:layout_height="32dp" android:text="Vaciar" android:layout_x="258dp" android:layout_y="96dp" style="?android:attr/buttonStyleSmall"/>
+    <ImageButton android:id="@+id/cmdAyuda" android:layout_width="24dp" android:layout_height="21dp" android:src="@drawable/interrogacion" android:layout_x="39dp" android:layout_y="46dp"/>
+</AbsoluteLayout>
