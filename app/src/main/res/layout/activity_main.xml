@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
+<!-- Contenedor principal: RelativeLayout para organizar elementos en relación entre sí -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -10,48 +9,53 @@
     android:background="@color/white"
     android:backgroundTint="@color/white">
 
-    <!-- Header aligned to top  -->
+    <!-- Sección superior (Header): Encabezado de la interfaz -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/elecnor_blue"
         tools:ignore="NewApi">
 
+        <!-- Logo en el encabezado -->
         <ImageView
-
             android:layout_width="58dp"
             android:layout_height="36dp"
-            android:layout_x="8dp"
-            android:layout_y="6dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/todo"
             android:src="@drawable/logotess" />
 
+        <!-- Título centrado en el encabezado -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="80dp"
-            android:layout_x="90dp"
-            android:layout_y="14dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/white"
             android:fontFamily="sans-serif"
-            android:text="ELECNOR PROYECTOS Y SERVICIOS"
+            android:text="@string/header_text"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- Footer aligned to bottom -->
+    <!-- Sección inferior (Footer): Pie de página con información -->
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#2D79F8"
-        android:backgroundTint="@android:color/system_accent1_400"
+        android:background="@color/elecnor_blue"
+        android:backgroundTint="@color/elecnor_blue"
         android:gravity="center"
         tools:ignore="NewApi">
 
+        <!-- Texto en el pie de página -->
         <TextView
             android:id="@+id/Lbempresa"
             android:layout_width="wrap_content"
@@ -60,13 +64,13 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="ELECNOR 2023"
+            android:text="@string/footer_text"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- Content below header and above footer -->
+    <!-- Sección principal (Contenido): Elementos ubicados entre el header y el footer -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -75,46 +79,62 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
+        <!-- Título principal del contenido -->
+        <TextView
+            android:id="@+id/LbTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="top|center_horizontal"
+            android:text="@string/title_text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen de fondo con opacidad -->
+        <ImageView
+            android:id="@+id/background_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/logotess"
+            android:alpha="0.5"/>
+
+        <!-- Sección de botones y controles -->
         <LinearLayout
             android:id="@+id/LinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true">
 
-            <TextView
-                android:id="@+id/LbTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scrollHorizontally="false"
-                android:text="APLICACIÓN CALCULAR FLECHAS"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
+            <!-- Botón para calcular flecha de un vano -->
             <Button
                 android:id="@+id/cmdCalcularFlecha1Vano"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Compr. flecha 1 vano"
+                android:text="@string/button_calculate_sag_1span"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Botón para comprobar flecha de dos vanos -->
             <Button
                 android:id="@+id/cmdComprobarFlecha2vanos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Compr. flecha a 2 vanos"
+                android:text="@string/button_check_sag_2spans"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Botones adicionales para acciones específicas -->
             <Button
                 android:id="@+id/cmdFlechar1Vano"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Flechar 1 vano"
+                android:text="@string/button_sag_1span"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -123,41 +143,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#D5D3D3"
-                android:text="Flechar 2 vanos"
+                android:text="@string/button_sag_2spans"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Botón para medir altura -->
             <Button
                 android:id="@+id/cmdMedirAltura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
-                android:text="Medir altura"
+                android:text="@string/button_measure_height"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Botón para medir longitud -->
             <Button
                 android:id="@+id/cmdMedirLongitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Medir longitud"
+                android:text="@string/button_measure_length"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-
+            <!-- Botón para salir de la aplicación -->
             <Button
                 android:id="@+id/cmdSalir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Salir"
+                android:text="@string/button_exit"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Grupo de selección para unidades métricas o imperiales -->
+            <RadioGroup
+                android:id="@+id/radioGroupUnits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+                <!-- Opción para unidades métricas -->
+                <RadioButton
+                    android:id="@+id/rbMetric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metric"
+                    android:checked="true" />
+
+                <!-- Opción para unidades imperiales (oculta) -->
+                <RadioButton
+                    android:id="@+id/rbImperial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Imperial"
+                    android:visibility="gone" />
+
+            </RadioGroup>
+             </LinearLayout>
+         </RelativeLayout>
+     </RelativeLayout>

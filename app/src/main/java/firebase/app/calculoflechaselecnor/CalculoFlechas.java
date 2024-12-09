@@ -1,77 +1,112 @@
 package firebase.app.calculoflechaselecnor;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-/* loaded from: classes.dex */
-public class CalculoFlechas extends Activity {
-    @Override // android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
+import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * Actividad principal para la aplicación de cálculo de flechas.
+ * Contiene un menú con botones que redirigen a diferentes partes de la aplicación.
+ */
+public class CalculoFlechas extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button comprfl1van = (Button) findViewById(R.id.cmdCalcularFlecha1Vano);
-        comprfl1van.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.1
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), ControladorComprobarFlecha1Vano.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
+
+        // Configura los botones y sus listeners
+        configurarBotones();
+
+
+        // Referencias a los componentes en el layout
+        RadioGroup radioGroupUnits = findViewById(R.id.radioGroupUnits);
+        RadioButton rbMetric = findViewById(R.id.rbMetric);
+        RadioButton rbImperial = findViewById(R.id.rbImperial);
+     //   rbImperial.isEnabled = false; // Deshabilitar
+
+        // Configurar el listener para cambios en la selección
+        radioGroupUnits.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Verificar qué opción fue seleccionada y guardarla en GlobalData
+                if (checkedId == R.id.rbMetric) {
+                    // Si se selecciona el sistema métrico
+                    GlobalData.setSelectedSystem("Métrico");
+                } else if (checkedId == R.id.rbImperial) {
+                    // Si se selecciona el sistema imperial
+                    GlobalData.setSelectedSystem("Imperial");
+                }
             }
         });
-        Button comprfl2van = (Button) findViewById(R.id.cmdComprobarFlecha2vanos);
-        comprfl2van.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), ControladorComprobarFlechas2Vanos.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button flechar1vano = (Button) findViewById(R.id.cmdFlechar1Vano);
-        flechar1vano.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.3
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Flechar1Vano.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button flechar2vanos = (Button) findViewById(R.id.cmdFlechar2Vanos);
-        flechar2vanos.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.4
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Flechar2Vanos.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button calcularaltura = (Button) findViewById(R.id.cmdMedirAltura);
-        calcularaltura.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.5
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), CalcularAltura.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button calcularlongitud = (Button) findViewById(R.id.cmdMedirLongitud);
-        calcularlongitud.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.6
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), CalcularLongitud.class);
-                CalculoFlechas.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button salir = (Button) findViewById(R.id.cmdSalir);
-        salir.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalculoFlechas.7
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                CalculoFlechas.this.finish();
-            }
-        });
+
+        // Inicializar con el valor predeterminado (si se quiere configurar un valor inicial)
+        if (rbMetric.isChecked()) {
+            GlobalData.setSelectedSystem("Métrico");
+        } else if (rbImperial.isChecked()) {
+            GlobalData.setSelectedSystem("Imperial");
+        }
     }
 
-    @Override // android.app.Activity
+    /**
+     * Configura los botones en la actividad y asigna sus listeners.
+     */
+    private void configurarBotones() {
+        // Configura el botón para comprobar flecha en un vano
+        Button botonComprobarFlecha1Vano = findViewById(R.id.cmdCalcularFlecha1Vano);
+        botonComprobarFlecha1Vano.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, ControladorComprobarFlecha1Vano.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para comprobar flechas en dos vanos
+        Button botonComprobarFlechas2Vanos = findViewById(R.id.cmdComprobarFlecha2vanos);
+        botonComprobarFlechas2Vanos.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, ControladorComprobarFlechas2Vanos.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para calcular flecha en un vano
+        Button botonFlechar1Vano = findViewById(R.id.cmdFlechar1Vano);
+        botonFlechar1Vano.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, Flechar1Vano.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para calcular flecha en dos vanos
+        Button botonFlechar2Vanos = findViewById(R.id.cmdFlechar2Vanos);
+        botonFlechar2Vanos.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, Flechar2Vanos.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para calcular la altura
+        Button botonCalcularAltura = findViewById(R.id.cmdMedirAltura);
+        botonCalcularAltura.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, CalcularAltura.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para calcular la longitud
+        Button botonCalcularLongitud = findViewById(R.id.cmdMedirLongitud);
+        botonCalcularLongitud.setOnClickListener(view -> {
+            Intent intent = new Intent(CalculoFlechas.this, CalcularLongitud.class);
+            startActivity(intent);
+        });
+
+        // Configura el botón para salir de la aplicación
+        Button botonSalir = findViewById(R.id.cmdSalir);
+        botonSalir.setOnClickListener(view -> finish());
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Infla el menú desde el archivo de menú XML
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }

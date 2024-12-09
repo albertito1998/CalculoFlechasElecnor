@@ -1,5 +1,7 @@
 package firebase.app.calculoflechaselecnor;
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,146 +10,173 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import java.text.DecimalFormat;
 
-/* loaded from: classes.dex */
+/**
+ * Controlador para la actividad que permite calcular el ángulo para flechar el segundo vano.
+ * Maneja la entrada de datos, validación y cálculo del ángulo.
+ */
 public class Flechar2Vanos extends Activity {
-    public static final String Accion = "Accion";
+    public static final String ACCION = "Accion";
 
-    @Override // android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flechar2vanos);
-        Button botoncancelar = (Button) findViewById(R.id.cmdVolver);
-        botoncancelar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.Flechar2Vanos.1
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Flechar2Vanos.this.finish();
-            }
+
+        configurarBotones();
+
+        // Obtener referencias a los TextView
+        TextView unidadesAngulo = findViewById(R.id.unidadesAngulo);      // Para el ángulo
+        TextView unidadesAngulo1 = findViewById(R.id.unidadesAngulo1);      // Para el ángulo
+        TextView unidadesAngulo2 = findViewById(R.id.unidadesAngulo2);      // Para el ángulo
+
+        TextView unidadesDistancias = findViewById(R.id.unidadesDistancia); // Para las distancias
+        TextView unidadesDistancias1 = findViewById(R.id.unidadesDistancia1); // Para las distancias
+        TextView unidadesDistancias2 = findViewById(R.id.unidadesDistancia2); // Para las distancias
+
+        // Referencia al TextView
+        TextView tvSelectedUnits = findViewById(R.id.tvSelectedUnits);
+
+        // Obtener el valor de la variable global (selected system) y mostrarlo en el TextView
+        String selectedSystem;
+
+
+        selectedSystem = GlobalData.getSelectedSystem();
+
+
+        // Actualizar el texto del TextView
+        tvSelectedUnits.setText("Selected units: " + selectedSystem);
+
+        // Verificar si el sistema es imperial o métrico y ajustar el texto del TextView para los ángulos
+        if ("Imperial".equals(selectedSystem)) {
+            // Cambiar el texto a segundos de arco para ángulos
+            unidadesAngulo.setText("\""); // El símbolo de segundos de arco
+            unidadesAngulo1.setText("\""); // El símbolo de segundos de arco
+            unidadesAngulo2.setText("\""); // El símbolo de segundos de arco
+            // Cambiar el texto a "pies" para distancias
+            unidadesDistancias.setText("ft");
+            unidadesDistancias1.setText("ft");
+            unidadesDistancias2.setText("ft");
+        } else {
+            // Mantener el texto en grados (º) para ángulos
+            unidadesAngulo.setText("º");
+            unidadesAngulo1.setText("º"); // El símbolo de segundos de arco
+            unidadesAngulo2.setText("º"); // El símbolo de segundos de arco
+            // Mantener el texto en metros (m) para distancias
+            unidadesDistancias.setText("m");
+            unidadesDistancias1.setText("m");
+            unidadesDistancias2.setText("m");
+        }
+    }
+
+    /**
+     * Configura los botones en la actividad y asigna sus listeners.
+     */
+    private void configurarBotones() {
+        Button botonCancelar = findViewById(R.id.cmdVolver);
+        botonCancelar.setOnClickListener(view -> finish());
+
+        ImageButton botonAyuda = findViewById(R.id.cmdAyuda);
+        botonAyuda.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt(ACCION, 4);
+            Intent myIntent = new Intent(view.getContext(), AbrirAyuda.class);
+            myIntent.putExtras(bundle);
+            startActivityForResult(myIntent, 0);
         });
-        ImageButton botonayuda = (ImageButton) findViewById(R.id.cmdAyuda);
-        botonayuda.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.Flechar2Vanos.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("Accion", 4);
-                Intent myIntent = new Intent(view.getContext(), AbrirAyuda.class);
-                myIntent.putExtras(bundle);
-                Flechar2Vanos.this.startActivityForResult(myIntent, 0);
-            }
-        });
-        Button botonvaciar = (Button) findViewById(R.id.cmdVaciar);
-        botonvaciar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.Flechar2Vanos.3
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                EditText anggrapa1 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtanggrapa1);
-                EditText anggrapa2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtanggrapa2);
-                EditText longvan1 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtlonvan1);
-                EditText longvan2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtlonvan2);
-                EditText flechteovan2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtflechteorvan2);
-                TextView anguloflechar = (TextView) Flechar2Vanos.this.findViewById(R.id.txtanguloflechar);
-                anggrapa1.setText("");
-                anggrapa2.setText("");
-                longvan1.setText("");
-                longvan2.setText("");
-                flechteovan2.setText("");
-                anguloflechar.setText("Ángulo para flechar vano 2:");
-            }
-        });
-        Button comprobar = (Button) findViewById(R.id.cmdComprobar);
-        comprobar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.Flechar2Vanos.4
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                double resultado;
-                EditText anggrapa1 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtanggrapa1);
-                EditText anggrapa2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtanggrapa2);
-                EditText longvan1 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtlonvan1);
-                EditText longvan2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtlonvan2);
-                EditText flechteovan2 = (EditText) Flechar2Vanos.this.findViewById(R.id.txtflechteorvan2);
-                TextView msgerror = (TextView) Flechar2Vanos.this.findViewById(R.id.txtMensajeError);
-                msgerror.setTextColor(-65536);
-                int falta = 0;
-                TextView error1 = (TextView) Flechar2Vanos.this.findViewById(R.id.txtError1);
-                TextView error2 = (TextView) Flechar2Vanos.this.findViewById(R.id.txtError2);
-                TextView error3 = (TextView) Flechar2Vanos.this.findViewById(R.id.txtError3);
-                TextView error4 = (TextView) Flechar2Vanos.this.findViewById(R.id.txtError4);
-                TextView error5 = (TextView) Flechar2Vanos.this.findViewById(R.id.txtError5);
-                error1.setTextColor(-65536);
-                error2.setTextColor(-65536);
-                error3.setTextColor(-65536);
-                error4.setTextColor(-65536);
-                error5.setTextColor(-65536);
-                if (anggrapa1.getText().toString().trim().equals("")) {
-                    error1.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
-                } else {
-                    error1.setVisibility(View.INVISIBLE);
-                    msgerror.setVisibility(View.INVISIBLE);
-                }
-                if (anggrapa2.getText().toString().trim().equals("")) {
-                    error2.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
-                } else {
-                    error2.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(View.VISIBLE);
-                    }
-                }
-                if (longvan1.getText().toString().trim().equals("")) {
-                    error3.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
-                } else {
-                    error3.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(0);
-                    }
-                }
-                if (longvan2.getText().toString().trim().equals("")) {
-                    error4.setVisibility(0);
-                    msgerror.setVisibility(0);
-                    falta = 1;
-                } else {
-                    error4.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(0);
-                    }
-                }
-                if (flechteovan2.getText().toString().trim().equals("")) {
-                    error5.setVisibility(0);
-                    msgerror.setVisibility(0);
-                    falta = 1;
-                } else {
-                    error5.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(0);
-                    }
-                }
-                TextView anguloflechar = (TextView) Flechar2Vanos.this.findViewById(R.id.txtanguloflechar);
-                if (falta == 0) {
-                    double A = Double.parseDouble(anggrapa1.getText().toString());
-                    double B = Double.parseDouble(anggrapa2.getText().toString());
-                    double C = Double.parseDouble(longvan1.getText().toString());
-                    double J = Double.parseDouble(longvan2.getText().toString());
-                    double F = Double.parseDouble(flechteovan2.getText().toString());
-                    double D = J + C;
-                    double E = Flechar2Vanos.this.CalcularE(F, D, C, B, A);
-                    double X = Flechar2Vanos.this.CalcularX(F, E, D, C);
-                    double P = Flechar2Vanos.this.CalcularP(A, X, C);
-                    if (P > 0.0d) {
-                        resultado = P;
-                    } else {
-                        resultado = 200.0d + P;
-                    }
-                    DecimalFormat df = new DecimalFormat("0.000");
-                    anguloflechar.setText("Ángulo para flechar vano 2:  " + df.format(resultado) + " º");
-                    return;
-                }
-                anguloflechar.setText("Ángulo para flechar vano 2: --");
-            }
-        });
+
+        Button botonVaciar = findViewById(R.id.cmdVaciar);
+        botonVaciar.setOnClickListener(view -> vaciarCampos());
+
+        Button botonComprobar = findViewById(R.id.cmdComprobar);
+        botonComprobar.setOnClickListener(view -> comprobarDatos());
+    }
+
+    /**
+     * Vacía todos los campos de entrada y restablece el texto del ángulo para flechar vano 2.
+     */
+    private void vaciarCampos() {
+        EditText anggrapa1 = findViewById(R.id.txtanggrapa1);
+        EditText anggrapa2 = findViewById(R.id.txtanggrapa2);
+        EditText longvan1 = findViewById(R.id.txtlonvan1);
+        EditText longvan2 = findViewById(R.id.txtlonvan2);
+        EditText flechteovan2 = findViewById(R.id.txtflechteorvan2);
+        TextView anguloflechar = findViewById(R.id.txtanguloflechar);
+
+        anggrapa1.setText("");
+        anggrapa2.setText("");
+        longvan1.setText("");
+        longvan2.setText("");
+        flechteovan2.setText("");
+        anguloflechar.setText(getString(R.string.anguloflechar_vano2_prefix));
+    }
+
+    /**
+     * Comprueba los datos ingresados, realiza cálculos y muestra el ángulo para flechar vano 2.
+     */
+    @SuppressLint("SetTextI18n")
+    private void comprobarDatos() {
+        EditText anggrapa1 = findViewById(R.id.txtanggrapa1);
+        EditText anggrapa2 = findViewById(R.id.txtanggrapa2);
+        EditText longvan1 = findViewById(R.id.txtlonvan1);
+        EditText longvan2 = findViewById(R.id.txtlonvan2);
+        EditText flechteovan2 = findViewById(R.id.txtflechteorvan2);
+
+        TextView msgError = findViewById(R.id.txtMensajeError);
+        msgError.setTextColor(getResources().getColor(R.color.error_color));
+
+
+
+        boolean falta = false;
+        falta |= verificarCampoVacio(anggrapa1, R.id.txtError1);
+        falta |= verificarCampoVacio(anggrapa2, R.id.txtError2);
+        falta |= verificarCampoVacio(longvan1, R.id.txtError3);
+        falta |= verificarCampoVacio(longvan2, R.id.txtError4);
+        falta |= verificarCampoVacio(flechteovan2, R.id.txtError5);
+
+        if (!falta) {
+            realizarCalculos(anggrapa1, anggrapa2, longvan1, longvan2, flechteovan2);
+        } else {
+            mostrarResultadosPorDefecto();
+        }
+    }
+
+    private boolean verificarCampoVacio(EditText campo, int errorViewId) {
+        boolean vacio = campo.getText().toString().trim().isEmpty();
+        TextView errorView = findViewById(errorViewId);
+        if (vacio) {
+            errorView.setVisibility(View.VISIBLE);
+        } else {
+            errorView.setVisibility(View.INVISIBLE);
+        }
+        return vacio;
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void realizarCalculos(EditText anggrapa1, EditText anggrapa2, EditText longvan1, EditText longvan2, EditText flechteovan2) {
+        double A = Double.parseDouble(anggrapa1.getText().toString());
+        double B = Double.parseDouble(anggrapa2.getText().toString());
+        double C = Double.parseDouble(longvan1.getText().toString());
+        double J = Double.parseDouble(longvan2.getText().toString());
+        double F = Double.parseDouble(flechteovan2.getText().toString());
+
+        double D = J + C;
+        double E = CalcularE(F, D, C, B, A);
+        double X = CalcularX(F, E, D, C);
+        double P = CalcularP(A, X, C);
+
+        double resultado = P > 0.0d ? P : 200.0d + P;
+        DecimalFormat df = new DecimalFormat("0.000");
+        TextView anguloflechar = findViewById(R.id.txtanguloflechar);
+        anguloflechar.setText(getString(R.string.anguloflechar_vano2_prefix) + df.format(resultado) + " º");
+    }
+
+    private void mostrarResultadosPorDefecto() {
+        TextView anguloflechar = findViewById(R.id.txtanguloflechar);
+        anguloflechar.setText(getString(R.string.anguloflechar_vano2_placeholder));
     }
 
     public double CalcularE(double F, double D, double C, double B, double A) {
@@ -157,13 +186,11 @@ public class Flechar2Vanos extends Activity {
         double OPTan = (1.0d / Math.tan(Benrad)) - (1.0d / Math.tan(Aenrad));
         double primfactor = 4.0d * ((D / C) - 1.0d);
         double segfactor = (D * OPTan) - (4.0d * F);
-        double res = Math.sqrt((16.0d * F) - (primfactor * segfactor));
-        return res;
+        return Math.sqrt((16.0d * F) - (primfactor * segfactor));
     }
 
     public double CalcularX(double F, double E, double D, double C) {
-        double res = (((-4.0d) * Math.sqrt(F)) + E) / (2.0d * ((D / C) - 1.0d));
-        return res;
+        return (((-4.0d) * Math.sqrt(F)) + E) / (2.0d * ((D / C) - 1.0d));
     }
 
     public double CalcularP(double A, double X, double C) {
@@ -171,7 +198,6 @@ public class Flechar2Vanos extends Activity {
         double Aenrad = OM.aradianes(A);
         double RES1 = Math.pow((1.0d / Math.tan(Aenrad)) - (Math.pow(X, 2.0d) / C), -1.0d);
         double res = Math.atan(RES1);
-        double RESengrad = OM.agrados(res);
-        return RESengrad;
+        return OM.agrados(res);
     }
 }

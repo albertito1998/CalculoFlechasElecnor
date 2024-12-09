@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores existentes -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="orange_500">#FF9900</color>
@@ -8,4 +9,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Nuevos colores añadidos para el diseño del login -->
+    <color name="background_color">#FFF5F5F5</color> <!-- Color de fondo para el login -->
+    <color name="primary_text">#FF212121</color> <!-- Color principal del texto -->
+    <color name="secondary_text">#FF757575</color> <!-- Color secundario del texto (por ejemplo, pie de página) -->
+    <color name="error_color">#FFD32F2F</color> <!-- Color para los mensajes de error -->
+    <color name="link_color">#FF1E88E5</color> <!-- Color para los enlaces -->
+
+    <!-- Colores corporativos de Elecnor -->
+    <color name="elecnor_blue">#004B87</color>
+    <color name="elecnor_orange">#F58220</color>
+    <color name="elecnor_button_text">#FFFFFF</color>
 </resources>

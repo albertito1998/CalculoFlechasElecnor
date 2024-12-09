@@ -1,61 +1,218 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">CalculoFlechasElecnor</string>
+
+    <!-- Ajustes de la aplicación -->
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+
+    <!-- Etiquetas usadas para la navegación entre fragmentos -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- Mensajes en fragmentos -->
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Texto completo de Términos y Condiciones -->
     <string name="terminos_y_condiciones">
-      Términos y Condiciones de Uso de la Aplicación
+        Términos y Condiciones de Uso de la Aplicación\n
+        Fecha de entrada en vigencia: 31 de agosto de 2024\n\n
+        A. Introducción\n\n
+        1. Los presentes Términos y Condiciones de Uso (en adelante, &quot;Términos&quot;) constituyen un acuerdo legal entre el usuario (en adelante, &quot;Usuario&quot;) y el creador de la aplicación, Alberto Gómez Zueco (en adelante, &quot;Creador&quot;), con respecto al acceso y uso de la aplicación denominada &quot;CalculoFlechasElecnor&quot; (en adelante, &quot;Aplicación&quot;).\n\n
+        2. El acceso y uso de la Aplicación están estrictamente limitados a aquellos usuarios que hayan recibido autorización expresa y por escrito del Creador. Cualquier uso no autorizado de la Aplicación será considerado ilegal y constituirá una violación de los presentes Términos.\n\n
+        B. Uso Adecuado de la Aplicación\n\n
+        1. El Usuario se compromete a utilizar la Aplicación exclusivamente para fines técnicos y relacionados con los servicios proporcionados por Elecnor, según lo autorizado por el Creador.\n\n
+        2. Queda expresamente prohibido utilizar la Aplicación para actividades ilegales, no autorizadas o contrarias a las leyes y regulaciones aplicables en España.\n\n
+        3. El Usuario no podrá compartir, distribuir, copiar, modificar o ceder la Aplicación, ni total ni parcialmente, sin la autorización previa y por escrito del Creador. Cualquier infracción de esta disposición podrá dar lugar a la adopción de las medidas legales pertinentes.\n\n
+        C. Protección de Datos y Privacidad\n\n
+        1. El Creador se compromete a proteger la privacidad del Usuario y a cumplir con todas las normativas de protección de datos vigentes en España, en particular con el Reglamento (UE) 2016/679 (Reglamento General de Protección de Datos).\n\n
+        2. Los datos personales proporcionados por el Usuario en el marco del uso de la Aplicación serán recopilados y tratados de acuerdo con la Política de Privacidad del Creador.\n\n
+        D. Responsabilidades del Creador\n\n
+        1. El Creador se esforzará por proporcionar información precisa y actualizada en la Aplicación, pero no garantiza la exactitud ni la disponibilidad continua de la misma.\n\n
+        2. La Aplicación puede contener enlaces a sitios web externos, los cuales son proporcionados únicamente para conveniencia del Usuario. El Creador no asume ninguna responsabilidad por el contenido de dichos sitios web externos.\n\n
+        E. Derechos de Propiedad Intelectual\n\n
+        1. Todos los derechos de propiedad intelectual, incluidos pero no limitados a derechos de autor, marcas registradas y secretos comerciales, relacionados con la Aplicación y su contenido, son propiedad exclusiva del Creador.\n\n
+        2. El Usuario reconoce y acepta que la Aplicación, así como todos los elementos que la componen, están protegidos por las leyes de propiedad intelectual y que cualquier uso no autorizado de los mismos constituirá una infracción de los derechos del Creador.\n\n
+        F. Modificaciones de los Términos\n\n
+        1. El Creador se reserva el derecho de modificar los presentes Términos en cualquier momento. Las modificaciones entrarán en vigor en el momento de su publicación en la Aplicación. El uso continuado de la Aplicación después de dicha publicación constituirá la aceptación de las modificaciones por parte del Usuario.\n\n
+        G. Contacto\n\n
+        1. Para cualquier consulta o comentario relacionado con estos Términos, el Usuario puede ponerse en contacto con el Creador, Alberto Gómez Zueco, a través del siguiente correo electrónico: albegoco@gmail.com.\n\n
+        H. Aceptación de los Términos\n\n
+        1. Al acceder y utilizar la Aplicación, el Usuario manifiesta su conformidad con los presentes Términos. En caso de no aceptar los Términos, el Usuario deberá abstenerse de utilizar la Aplicación.\n\n
+        Última actualización: 31 de agosto de 2024
+    </string>
 
-    Fecha de entrada en vigencia: [Fecha]
-
-    A. Introducción
-
-    1. Estos Términos y Condiciones de Uso ("Términos") son un acuerdo legal entre el usuario ("Usuario") y [Nombre de la Empresa], una empresa registrada en España, con su sede principal en [Dirección].
-
-    B. Uso Adecuado de la Aplicación
-
-    1. El Usuario acepta utilizar esta aplicación únicamente con fines técnicos y relacionados con los servicios proporcionados por Elecnor.
-
-    2. El Usuario se compromete a no utilizar la aplicación para actividades ilegales o contrarias a las leyes y regulaciones aplicables en España.
-
-    C. Protección de Datos y Privacidad
-
-    1. Elecnor se compromete a proteger la privacidad del Usuario y a cumplir con todas las regulaciones de protección de datos aplicables en España.
-
-    2. Los datos personales proporcionados por el Usuario se recopilan y utilizan de acuerdo con nuestra Política de Privacidad.
-
-    D. Responsabilidades de la Empresa Elecnor
-
-    1. Elecnor se esfuerza por proporcionar información precisa y actualizada en la aplicación, pero no garantiza la precisión ni la disponibilidad constante de la misma.
-
-    2. La aplicación puede contener enlaces a sitios web externos; Elecnor no se hace responsable del contenido de estos sitios.
-
-    E. Derechos de Propiedad Intelectual
-
-    1. Todos los derechos de propiedad intelectual de la aplicación y su contenido son propiedad exclusiva de Elecnor.
-
-    2. El Usuario no tiene permiso para copiar, modificar o distribuir el contenido de la aplicación sin autorización.
-
-    F. Cambios en los Términos y Condiciones
-
-    1. Elecnor se reserva el derecho de modificar estos Términos en cualquier momento. Los cambios se publicarán en la aplicación.
-
-    G. Contacto
-
-    1. Para cualquier pregunta o comentario sobre estos Términos, el Usuario puede ponerse en contacto con [Nombre de Contacto] en [Dirección de Contacto].
-
-    H. Aceptación de los Términos
-
-    1. Al utilizar esta aplicación, el Usuario acepta estos Términos y Condiciones de Uso.
-
-    Última actualización: [Fecha de Actualización]
-</string>
+    <!-- Texto para el enlace a la página de términos y condiciones -->
     <string name="t_rminos_y_condiciones">Términos y condiciones</string>
 
+    <!-- Cadenas para la pantalla de inicio de sesión -->
+    <string name="welcome_message">Bienvenido a Elecnor</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="login_button_text">Iniciar sesión</string>
+    <string name="error_invalid_email">Por favor, introduce un correo electrónico válido.</string>
+    <string name="error_authentication_failed">La autenticación ha fallado. Por favor, inténtalo de nuevo.</string>
+
+    <!-- Descripciones para accesibilidad -->
+    <string name="logo_description">Logo de Elecnor</string>
+    <string name="login_button_description">Botón para iniciar sesión</string>
+    <string name="terms_and_conditions_description">Enlace a los términos y condiciones</string>
+    <string name="img_ayuda_desc">Descripción de la imagen de ayuda</string>
+
+    <!-- Texto del botón para aceptar los términos y condiciones -->
+    <string name="accept_terms_button">Aceptar</string>
+
+    <!-- Strings for ControladorComprobarFlechas2Vanos -->
+    <string name="flechareal_prefix">Flecha real: </string>
+    <string name="cablebajo_prefix">Cable bajo: </string>
+    <string name="cablealto_prefix">Cable alto: </string>
+    <string name="flechareal_placeholder">Flecha real: &#8212;</string>
+    <string name="cablebajo_placeholder">Cable bajo: &#8212;</string>
+    <string name="error_msg">Por favor, complete todos los campos.</string>
+    <string name="error_anggrapa1">Campo ángulo grapa 1 requerido.</string>
+    <string name="error_anggrapa2">Campo ángulo grapa 2 requerido.</string>
+    <string name="error_angcablevano">Campo ángulo cable vano requerido.</string>
+    <string name="error_longvan1">Campo longitud vano 1 requerido.</string>
+    <string name="error_longvan2">Campo longitud vano 2 requerido.</string>
+    <string name="error_flechavano">Campo flecha vano requerido.</string>
+    <string name="error_dist">Campo distancia requerido.</string>
+    <string name="error_anggrapa">Campo ángulo grapa requerido.</string>
+    <string name="error_longvan">Campo longitud vano requerido.</string>
+    <string name="error_flechteor">Campo flecha teórica requerido.</string>
+    <string name="error_flechteorvan2">Campo flecha teórica vano 2 requerido.</string>
+
+    <!-- Titles and Labels -->
+    <string name="titulo_comprobar_flecha">COMPROBAR FLECHA 1 VANO</string>
+    <string name="titulo_comprobar_flecha2">COMPROBAR FLECHA 2 VANO</string>
+    <string name="introduzca_datos">Introduzca los siguientes datos:</string>
+    <string name="distancia_taquimetro">- Distancia taquimetro a fase:</string>
+    <string name="angulo_en_grapa">- Ángulo en grapa:</string>
+    <string name="angulo_en_cable">- Ángulo en cable:</string>
+    <string name="longitud_vano">- Longitud del vano:</string>
+    <string name="flecha_teorica">- Flecha teórica:</string>
+    <string name="flecha_real">Flecha Real: </string>
+    <string name="cable_bajo">Cable Bajo:</string>
+    <string name="cable_alto">Cable Alto:</string>
+    <string name="titulo_calcular_altura">CALCULAR ALTURA</string>
+    <string name="introduzca_datos_calculo">Introduzca los siguientes datos:</string>
+    <string name="longitud_vano_label">- Longitud del vano:</string>
+    <string name="angulo_sup_label">- Ángulo parte superior:</string>
+    <string name="angulo_inf_label">- Ángulo parte inferior:</string>
+    <string name="altura_medida">Altura Medida:</string>
+    <string name="altura_medida_result">Altura Medida: %s metros</string>
+    <string name="error_campo_obligatorio">Campo obligatorio</string>
+    <string name="mensaje_error">(*) Falta</string>
+
+    <!-- Strings for validation errors -->
+    <string name="error_angulo_grapa_1">Campo ángulo en grapa 1 obligatorio.</string>
+    <string name="error_angulo_grapa_2">Campo ángulo en grapa 2 obligatorio.</string>
+    <string name="error_longitud_vano_1">Campo longitud del vano 1 obligatorio.</string>
+    <string name="error_longitud_vano_2">Campo longitud del vano 2 obligatorio.</string>
+    <string name="error_flecha_teorica_vano_2">Campo flecha teórica del vano 2 obligatorio.</string>
+    <string name="error_angulo_flechar" translatable="false">Campo ángulo para flechar vano 2 obligatorio.</string>
+
+    <!-- General Strings -->
+    <string name="header_text">ELECNOR PROYECTOS Y SERVICIOS</string>
+    <string name="footer_text">ELECNOR 2024</string>
+    <string name="title_text">APLICACIÓN CALCULAR FLECHAS</string>
+
+    <!-- Button Labels -->
+    <string name="button_calculate_sag_1span">Compr. flecha 1 vano</string>
+    <string name="button_check_sag_2spans">Compr. flecha a 2 vanos</string>
+    <string name="button_sag_1span">Flechar 1 vano</string>
+    <string name="button_sag_2spans">Flechar 2 vanos</string>
+    <string name="button_measure_height">Medir altura</string>
+    <string name="button_measure_length">Medir longitud</string>
+    <string name="button_exit">Salir</string>
+
+    <!-- Additional Strings -->
+    <string name="longitud_vano_2">- Longitud del vano 2:</string>
+    <string name="longitud_vano_1">- Longitud del vano 1:</string>
+    <string name="angulo_grapa_2">- Ángulo en grapa 2:</string>
+    <string name="angulo_grapa_1">- Ángulo en grapa 1:</string>
+    <string name="angulo_flechar">Ángulo para flechar vano 2:</string>
+    <string name="flecha_teorica_vano_2">- Flecha teórica del vano 2:</string>
+    <string name="mensaje_error_cd">Mensaje de error de validación</string>
+    <string name="ayuda_desc">Botón de ayuda</string>
+
+    <!-- Content Description Strings -->
+    <string name="logo_desc">Descripción del logo</string>
+    <string name="empresa_desc">Nombre de la empresa</string>
+    <string name="introduzca_datos_desc">Descripción del campo para introducir datos</string>
+    <string name="titulo_desc">Descripción del título</string>
+    <string name="longitud_vano_2_desc">Descripción de longitud del vano 2</string>
+    <string name="longitud_vano_1_desc">Descripción de longitud del vano 1</string>
+    <string name="angulo_grapa_2_desc">Descripción del ángulo en grapa 2</string>
+    <string name="angulo_grapa_1_desc">Descripción del ángulo en grapa 1</string>
+    <string name="angulo_flechar_desc">Descripción del ángulo para flechar vano 2</string>
+    <string name="flecha_teorica_vano_2_desc">Descripción de la flecha teórica del vano 2</string>
+    <string name="error_icon_desc">Descripción del icono de error</string>
+    <string name="comprobar_cd">Descripción del botón comprobar</string>
+    <string name="volver_cd">Descripción del botón volver</string>
+    <string name="vaciar_cd">Descripción del botón vaciar</string>
+    <string name="angulo_grapa_1_cd">Descripción del campo ángulo grapa 1</string>
+    <string name="angulo_grapa_2_cd">Descripción del campo ángulo grapa 2</string>
+    <string name="longitud_vano_1_cd">Descripción del campo longitud vano 1</string>
+    <string name="longitud_vano_2_cd">Descripción del campo longitud vano 2</string>
+    <string name="flecha_teorica_vano_2_cd">Descripción del campo flecha teórica vano 2</string>
+    <string name="volver">Volver</string>
+    <string name="Comprobar">Comprobar</string>
+    <string name="Vaciar">Vaciar</string>
+    <!-- Prefix for anguloflechar vano 2 -->
+    <string name="anguloflechar_vano2_prefix">Ángulo para flechar vano 2: </string>
+
+    <!-- Placeholder for anguloflechar vano 2 -->
+    <string name="anguloflechar_vano2_placeholder">Ángulo para flechar vano 2: &#8212;</string>
+
+    <!-- Prefix for anguloflechar -->
+    <string name="anguloflechar_prefix">Ángulo para flechar: </string>
+
+    <!-- Placeholder for anguloflechar -->
+    <string name="anguloflechar_placeholder">Ángulo para flechar: &#8212;</string>
+
+    <!-- Placeholder for altura medida -->
+    <string name="altura_medida_placeholder">Altura medida: &#8212;</string>
+    <!-- Abrir imagen -->
+    <string name="btn_cerrar">Cerrar</string>
+
+    <!-- Calcular altura -->
+    <string name="empresa_nombre">ELECNOR PROYECTOS Y SERVICIOS</string>
+    <string name="titulo_actividad">Calcular altura</string>
+    <string name="instrucciones">Introduzca los siguientes datos:</string>
+    <string name="angulo_sup_hint">Ángulo Superior</string>
+    <string name="longitud_vano_hint">Longitud del Vano</string>
+    <string name="angulo_inf_hint">Ángulo Inferior</string>
+    <string name="btn_comprobar">Comprobar</string>
+    <string name="error_falta">Falta Información</string>
+    <string name="btn_volver">Volver</string>
+    <string name="btn_vaciar">Vaciar</string>
+    <!-- Calcular longuitud -->
+    <string name="titulo_actividad_longuitd">Calcular longuitud</string>
+    <!-- Comprobar flecha 1 vano -->
+    <string name="empresa">ELECNOR SERVICIOS Y PROYECTOS</string>
+    <string name="titulo">Comprobar flecha 1 vano</string>
+    <string name="introduccion">Introduzca los valores: </string>
+    <string name="distancia_taquimetro_cd">Distancia Taquímetro CD</string>
+    <string name="flecha_teorica_cd">Flecha Teórica CD</string>
+    <!-- Comprobar flecha 1 vano -->
+    <string name="angulo_cable">Ángulo del Cable</string>
+    <string name="angulo_cable_cd">Ángulo del Cable CD</string>
+    <string name="longitud_vano_cd">Longitud del Vano CD</string>
+    <string name="angulo_grapa_cd">Ángulo de la Grapa CD</string>
+    <string name="angulo_grapa">Ángulo de la Grapa</string>
+    <string name="comprobar">Comprobar</string>
+    <string name="vaciar">Vaciar</string>
+
+    <!-- Login -->
+    <string name="terms_and_conditions" translatable="false">Términos y Condiciones</string>
+
+    <!-- Términos y condiciones -->
+    <string name="terms_and_conditions_title" translatable="false">Título de Términos y Condiciones</string>
+    <string name="_2023_elecnor_todos_los_derechos_reservados" translatable="false">© 2024 Elecnor. Todos los derechos reservados.</string>
+    <string name="todo">TODO</string>
+    <string name="selected_units">Selected units:</string>
+    <string name="altura_medida_result_imperial">Altura Medida: %s pies</string>
+    <string name="metric">Metric</string>
+    <string name="versi_n">Versión</string>
 </resources>

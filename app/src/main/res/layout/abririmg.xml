@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
-    <Button android:id="@+id/cmdVolver" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cerrar" android:layout_x="126dp" android:layout_y="360dp" style="?android:attr/buttonStyleSmall"/>
-    <ImageView android:id="@+id/imgAyuda" android:layout_width="320dp" android:layout_height="344dp" android:src="@drawable/ic_action_search" android:layout_x="1dp" android:layout_y="1dp"/>
-</AbsoluteLayout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"> <!-- Fondo azul corporativo -->
+
+    <!-- Header TextView -->
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="@color/elecnor_blue"
+        android:gravity="top|center_horizontal"
+        tools:ignore="MissingConstraints" />
+
+    <!-- ImageView -->
+    <ImageView
+        android:id="@+id/imgAyuda"
+        android:layout_width="320dp"
+        android:layout_height="344dp"
+        android:src="@drawable/ic_action_search"
+        android:contentDescription="@string/img_ayuda_desc"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/cmdVolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <!-- Button Volver -->
+    <Button
+        android:id="@+id/cmdVolver"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_cerrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

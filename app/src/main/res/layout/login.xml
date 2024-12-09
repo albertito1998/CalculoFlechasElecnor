@@ -1,87 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".Login">
 
+
+
     <!-- Encabezado Corporativo -->
     <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="32dp">
 
-        <!-- Logo de Elecnor -->
-        <ImageView
-            android:id="@+id/logoImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logotess"
-            android:layout_gravity="center"
-            android:layout_marginBottom="32dp"/>
+
 
         <!-- Título o mensaje corporativo -->
         <TextView
+            android:id="@+id/welcomeMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bienvenido a Elecnor"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:text="@string/welcome_message"
+            android:textColor="@color/primary_text"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <!-- Contenido del formulario de inicio de sesión -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        <!-- Logo de Elecnor como fondo -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/logo_description"
+            android:src="@drawable/logotess"
+           />
+
+
+    </LinearLayout>
+    <!-- Espacio flexible para empujar el formulario hacia abajo -->
+
+    <!-- Formulario de correo electrónico centrado en la pantalla -->
+    <LinearLayout
+        android:id="@+id/formLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEditText"
+
+
+        <!-- Campo de correo electrónico -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:importantForAccessibility="yes"
-            android:contentDescription="Email input field"/>
+            android:hint="@string/email_hint"
+            android:layout_marginBottom="16dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:importantForAccessibility="yes"
+                android:autofillHints="emailAddress" />
 
-    <Button
-        android:id="@+id/loginButton"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Iniciar sesión"/>
+            <!-- Indicador de Error -->
+            <TextView
+                android:id="@+id/emailErrorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/error_color"
+                android:visibility="gone"
+                android:text="@string/error_invalid_email" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Pie de página Corporativo -->
+        <!-- Botón de Inicio de Sesión -->
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_button_text"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/login_button_description" />
+
+        <!-- Indicador de carga (se muestra mientras se realiza el login) -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+    <!-- Espacio flexible para empujar el contenido hacia arriba -->
+
+
+    <!-- Pie de página Corporativo al final de la pantalla -->
     <LinearLayout
+        android:id="@+id/footerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="32dp">
 
         <!-- Texto de pie de página -->
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/versi_n"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="© 2023 Elecnor. Todos los derechos reservados."
-            android:textSize="12sp" />
+            android:text="@string/_2023_elecnor_todos_los_derechos_reservados"
+            android:textSize="12sp"
+            android:textColor="@color/secondary_text"
+            android:layout_marginBottom="8dp" />
 
         <!-- Enlace a la página de términos y condiciones -->
         <TextView
+            android:id="@+id/termsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="@string/t_rminos_y_condiciones"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:text="@string/terms_and_conditions"
+            android:textColor="@color/link_color"
+            android:textSize="12sp"
+            android:contentDescription="@string/terms_and_conditions_description"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

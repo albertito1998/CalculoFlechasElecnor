@@ -1,5 +1,6 @@
 package firebase.app.calculoflechaselecnor;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,131 +9,196 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import java.text.DecimalFormat;
 
-/* loaded from: classes.dex */
+/**
+ * Actividad para calcular la longitud basada en la altura y ángulos proporcionados.
+ */
 public class CalcularLongitud extends Activity {
-    public static final String Accion = "Accion";
 
-    @Override // android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
+    // Constante para la acción de la Intent
+    public static final String ACCION = "Accion";
+
+
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calcularlongitud);
-        Button botoncancelar = (Button) findViewById(R.id.cmdVolver);
-        botoncancelar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalcularLongitud.1
-            @Override // android.view.View.OnClickListener
+
+        // Configuración del botón "Cancelar" para cerrar la actividad
+        Button botonCancelar = findViewById(R.id.cmdVolver);
+        botonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                CalcularLongitud.this.finish();
+                finish(); // Cierra la actividad actual
             }
         });
-        ImageButton botonayuda = (ImageButton) findViewById(R.id.cmdAyuda);
-        botonayuda.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalcularLongitud.2
-            @Override // android.view.View.OnClickListener
+
+        // Referencia al TextView
+        TextView tvSelectedUnits = findViewById(R.id.tvSelectedUnits);
+
+        // Obtener el valor de la variable global (selected system) y mostrarlo en el TextView
+        String selectedSystem;
+
+
+        selectedSystem = GlobalData.getSelectedSystem();
+
+// Obtener referencias a los TextView
+        TextView unidadesAngulo = findViewById(R.id.unidadesAngulo);      // Para el ángulo
+        TextView unidadesAngulo1 = findViewById(R.id.unidadesAngulo1);      // Para el ángulo
+        TextView unidadesDistancias = findViewById(R.id.unidadesDistancias); // Para las distancias
+
+
+
+        // Actualizar el texto del TextView
+        // Actualizar el texto del TextView
+        tvSelectedUnits.setText("Selected units: " + selectedSystem);
+
+        // Verificar si el sistema es imperial o métrico y ajustar el texto del TextView para los ángulos
+        if ("Imperial".equals(selectedSystem)) {
+            // Cambiar el texto a segundos de arco para ángulos
+            unidadesAngulo.setText("\""); // El símbolo de segundos de arco
+            unidadesAngulo1.setText("\""); // El símbolo de segundos de arco
+            // Cambiar el texto a "pies" para distancias
+            unidadesDistancias.setText("ft");
+        } else {
+            // Mantener el texto en grados (º) para ángulos
+            unidadesAngulo.setText("º");
+            unidadesAngulo1.setText("º"); // El símbolo de segundos de arco
+            // Mantener el texto en metros (m) para distancias
+            unidadesDistancias.setText("m");
+        }
+
+
+        // Configuración del botón "Ayuda" para abrir la actividad de ayuda
+        ImageButton botonAyuda = findViewById(R.id.cmdAyuda);
+        botonAyuda.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("Accion", 6);
-                Intent myIntent = new Intent(view.getContext(), AbrirAyuda.class);
-                myIntent.putExtras(bundle);
-                CalcularLongitud.this.startActivityForResult(myIntent, 0);
+                // Crear un Intent para abrir la actividad de ayuda
+                Intent ayudaIntent = new Intent(view.getContext(), AbrirAyuda.class);
+                ayudaIntent.putExtra(ACCION, 6);
+                startActivityForResult(ayudaIntent, 0);
             }
         });
-        Button botonvaciar = (Button) findViewById(R.id.cmdVaciar);
-        botonvaciar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalcularLongitud.3
-            @Override // android.view.View.OnClickListener
+
+        // Configuración del botón "Vaciar" para limpiar los campos
+        Button botonVaciar = findViewById(R.id.cmdVaciar);
+        botonVaciar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
             public void onClick(View view) {
-                EditText altura = (EditText) CalcularLongitud.this.findViewById(R.id.txtAltura);
-                EditText angsup = (EditText) CalcularLongitud.this.findViewById(R.id.txtAnguloSup);
-                EditText anginf = (EditText) CalcularLongitud.this.findViewById(R.id.txtAnguloInf);
-                TextView longitudmedida = (TextView) CalcularLongitud.this.findViewById(R.id.txtLongitudMedida);
+                // Limpiar los campos de entrada y la salida
+                EditText altura = findViewById(R.id.txtAltura);
+                EditText angSup = findViewById(R.id.txtAnguloSup);
+                EditText angInf = findViewById(R.id.txtAnguloInf);
+                TextView longitudMedida = findViewById(R.id.txtLongitudMedida);
                 altura.setText("");
-                angsup.setText("");
-                anginf.setText("");
-                longitudmedida.setText("Longitud Medida:");
+                angSup.setText("");
+                angInf.setText("");
+                longitudMedida.setText("Longitud Medida:");
             }
         });
-        Button comprobar = (Button) findViewById(R.id.cmdComprobar);
-        comprobar.setOnClickListener(new View.OnClickListener() { // from class: com.example.calcularflechas.CalcularLongitud.4
-            @Override // android.view.View.OnClickListener
+
+        // Configuración del botón "Comprobar" para calcular la longitud
+        Button botonComprobar = findViewById(R.id.cmdComprobar);
+        botonComprobar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
             public void onClick(View view) {
-                double resultado;
-                EditText altura = (EditText) CalcularLongitud.this.findViewById(R.id.txtAltura);
-                EditText angsup = (EditText) CalcularLongitud.this.findViewById(R.id.txtAnguloSup);
-                EditText anginf = (EditText) CalcularLongitud.this.findViewById(R.id.txtAnguloInf);
-                TextView msgerror = (TextView) CalcularLongitud.this.findViewById(R.id.txtMensajeError);
-                msgerror.setTextColor(-65536);
-                int falta = 0;
-                TextView error1 = (TextView) CalcularLongitud.this.findViewById(R.id.txtError1);
-                TextView error2 = (TextView) CalcularLongitud.this.findViewById(R.id.txtError2);
-                TextView error3 = (TextView) CalcularLongitud.this.findViewById(R.id.txtError3);
-                error1.setTextColor(-65536);
-                error2.setTextColor(-65536);
-                error3.setTextColor(-65536);
-                if (altura.getText().toString().trim().equals("")) {
+                // Obtener las entradas del usuario
+                EditText altura = findViewById(R.id.txtAltura);
+                EditText angSup = findViewById(R.id.txtAnguloSup);
+                EditText angInf = findViewById(R.id.txtAnguloInf);
+                TextView msgError = findViewById(R.id.txtMensajeError);
+                TextView error1 = findViewById(R.id.txtError1);
+                TextView error2 = findViewById(R.id.txtError2);
+                TextView error3 = findViewById(R.id.txtError3);
+                TextView longitudMedida = findViewById(R.id.txtLongitudMedida);
+
+
+
+                // Inicializar variables de error
+                boolean hasError = false;
+                msgError.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                error1.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                error2.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                error3.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+
+                // Validar campos de entrada
+                if (altura.getText().toString().trim().isEmpty()) {
                     error1.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
+                    hasError = true;
                 } else {
                     error1.setVisibility(View.INVISIBLE);
-                    msgerror.setVisibility(View.INVISIBLE);
                 }
-                if (angsup.getText().toString().trim().equals("")) {
+
+                if (angSup.getText().toString().trim().isEmpty()) {
                     error2.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
+                    hasError = true;
                 } else {
                     error2.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(View.VISIBLE);
-                    }
                 }
-                if (anginf.getText().toString().trim().equals("")) {
+
+                if (angInf.getText().toString().trim().isEmpty()) {
                     error3.setVisibility(View.VISIBLE);
-                    msgerror.setVisibility(View.VISIBLE);
-                    falta = 1;
+                    hasError = true;
                 } else {
                     error3.setVisibility(View.INVISIBLE);
-                    if (falta == 1) {
-                        msgerror.setVisibility(0);
-                    }
                 }
-                TextView longitudmedida = (TextView) CalcularLongitud.this.findViewById(R.id.txtLongitudMedida);
-                if (falta == 0) {
+
+                // Si no hay errores, calcular la longitud
+                if (!hasError) {
                     double M = Double.parseDouble(altura.getText().toString());
-                    double G = Double.parseDouble(angsup.getText().toString());
-                    double C = Double.parseDouble(anginf.getText().toString());
-                    if (C < 100.0d && G < 100.0d) {
-                        resultado = CalcularLongitud1(M, G, C);
-                    } else if (C > 100.0d && G > 100.0d) {
-                        resultado = CalcularLongitud2(M, G, C);
+                    double G = Double.parseDouble(angSup.getText().toString());
+                    double C = Double.parseDouble(angInf.getText().toString());
+                    double resultado;
+
+                    // Determinar la fórmula adecuada para el cálculo
+                    if (C < 100.0 && G < 100.0) {
+                        resultado = calcularLongitud1(M, G, C);
+                    } else if (C > 100.0 && G > 100.0) {
+                        resultado = calcularLongitud2(M, G, C);
                     } else {
-                        resultado = CalcularLongitud3(M, G, C);
+                        resultado = calcularLongitud3(M, G, C);
                     }
+
+                    // Mostrar el resultado formateado
                     DecimalFormat df = new DecimalFormat("0.000");
-                    longitudmedida.setText("Longitud Medida:  " + df.format(resultado) + " metros");
-                    return;
+                    longitudMedida.setText("Longitud Medida: " + df.format(resultado) + " metros");
+                } else {
+                    longitudMedida.setText("Longitud Medida: --");
                 }
-                longitudmedida.setText("Longitud Medida: --");
             }
 
-            private double CalcularLongitud1(double M, double G, double C) {
+            /**
+             * Calcula la longitud usando la fórmula 1.
+             */
+            private double calcularLongitud1(double M, double G, double C) {
                 OperacionesMatematicas OM = new OperacionesMatematicas();
                 double tang = OM.calculotang1(G, C);
-                double res = M / tang;
-                return res;
+                return M / tang;
             }
 
-            private double CalcularLongitud2(double M, double G, double C) {
+            /**
+             * Calcula la longitud usando la fórmula 2.
+             */
+            private double calcularLongitud2(double M, double G, double C) {
                 OperacionesMatematicas OM = new OperacionesMatematicas();
                 double tang = OM.calculotang2(G, C);
-                double res = M / tang;
-                return res;
+                return M / tang;
             }
 
-            private double CalcularLongitud3(double M, double G, double C) {
+            /**
+             * Calcula la longitud usando la fórmula 3.
+             */
+            private double calcularLongitud3(double M, double G, double C) {
                 OperacionesMatematicas OM = new OperacionesMatematicas();
                 double tang = OM.calculotang3(G, C);
-                double res = M / tang;
-                return res;
+                return M / tang;
             }
         });
     }

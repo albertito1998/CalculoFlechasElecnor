@@ -1,37 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+<!-- Contenedor principal que utiliza AbsoluteLayout para posicionar elementos mediante coordenadas absolutas -->
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <!-- Imagen del logo de la aplicación -->
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="127dp"
         android:layout_height="43dp"
         android:layout_x="-9dp"
         android:layout_y="2dp"
+        android:contentDescription="TODO"
         android:src="@drawable/logotess" />
 
+    <!-- Nombre de la empresa -->
     <TextView
         android:id="@+id/Lbempresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
         android:layout_x="90dp"
         android:layout_y="14dp"
-        android:text="ELECNOR PROYECTOS Y SERVICIOS" />
-    <TextView android:textStyle="bold" android:id="@+id/LbTitulo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CALCULAR LONGITUD" android:scrollHorizontally="false" android:layout_x="89dp" android:layout_y="46dp"/>
-    <TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Altura:" android:layout_x="12dp" android:layout_y="146dp"/>
-    <TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Ángulo parte inferior:" android:layout_x="12dp" android:layout_y="262dp"/>
-    <TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="- Ángulo parte superior:" android:layout_x="12dp" android:layout_y="204dp"/>
-    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Introduzca los siguientes datos:" android:layout_x="9dp" android:layout_y="100dp"/>
-    <EditText android:textSize="10dp" android:id="@+id/txtAltura" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="140dp" android:inputType="numberDecimal"/>
-    <EditText android:textSize="10dp" android:id="@+id/txtAnguloSup" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="198dp" android:inputType="numberDecimal"/>
-    <EditText android:textSize="10dp" android:id="@+id/txtAnguloInf" android:layout_width="72dp" android:layout_height="35dp" android:ems="10" android:layout_x="203dp" android:layout_y="256dp" android:inputType="numberDecimal"/>
-    <TextView android:id="@+id/txtError1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="149dp"/>
-    <TextView android:id="@+id/txtError2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="207dp"/>
-    <TextView android:id="@+id/txtError3" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:layout_x="293dp" android:layout_y="265dp"/>
-    <Button android:id="@+id/cmdVolver" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Volver" android:layout_x="248dp" android:layout_y="379dp" style="?android:attr/buttonStyleSmall"/>
-    <Button android:id="@+id/cmdComprobar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Comprobar" android:layout_x="109dp" android:layout_y="319dp" style="?android:attr/buttonStyleSmall"/>
-    <TextView android:id="@+id/txtLongitudMedida" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Longitud Medida:" android:layout_x="17dp" android:layout_y="391dp"/>
-    <TextView android:id="@+id/txtMensajeError" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(*) Falta" android:layout_x="252dp" android:layout_y="306dp"/>
-    <Button android:textSize="8dp" android:id="@+id/cmdVaciar" android:layout_width="wrap_content" android:layout_height="32dp" android:text="Vaciar" android:layout_x="258dp" android:layout_y="96dp" style="?android:attr/buttonStyleSmall"/>
-    <ImageButton android:id="@+id/cmdAyuda" android:layout_width="24dp" android:layout_height="21dp" android:src="@drawable/interrogacion" android:layout_x="39dp" android:layout_y="46dp"/>
+        android:text="@string/header_text" />
+
+    <!-- Título principal de la actividad -->
+    <TextView
+        android:id="@+id/LbTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="89dp"
+        android:layout_y="46dp"
+        android:scrollHorizontally="false"
+        android:text="@string/titulo_actividad_longuitd"
+        android:textStyle="bold" />
+
+    <!-- Etiqueta para "altura medida" -->
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="12dp"
+        android:layout_y="146dp"
+        android:text="@string/altura_medida" />
+
+    <!-- Unidades de ángulos -->
+    <TextView
+        android:id="@+id/unidadesAngulo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="293dp"
+        android:layout_y="262dp"
+        android:text="º" />
+
+    <!-- Etiqueta para ángulo inferior -->
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="12dp"
+        android:layout_y="262dp"
+        android:text="@string/angulo_inf_label" />
+
+    <!-- Etiqueta para ángulo superior -->
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="12dp"
+        android:layout_y="204dp"
+        android:text="@string/angulo_sup_label" />
+
+    <!-- Instrucciones -->
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="9dp"
+        android:layout_y="100dp"
+        android:text="@string/instrucciones" />
+
+    <!-- Campo de entrada para altura -->
+    <EditText
+        android:id="@+id/txtAltura"
+        android:layout_width="72dp"
+        android:layout_height="35dp"
+        android:layout_x="203dp"
+        android:layout_y="140dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
+
+    <!-- Campo de entrada para ángulo superior -->
+    <EditText
+        android:id="@+id/txtAnguloSup"
+        android:layout_width="72dp"
+        android:layout_height="35dp"
+        android:layout_x="203dp"
+        android:layout_y="198dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
+
+    <!-- Campo de entrada para ángulo inferior -->
+    <EditText
+        android:id="@+id/txtAnguloInf"
+        android:layout_width="72dp"
+        android:layout_height="35dp"
+        android:layout_x="203dp"
+        android:layout_y="256dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="10dp" />
+
+    <!-- Unidades para distancias -->
+    <TextView
+        android:id="@+id/unidadesDistancias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="293dp"
+        android:layout_y="149dp"
+        android:text="m" />
+
+    <!-- Indicador de error para campo 1 -->
+    <TextView
+        android:id="@+id/txtError1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="320dp"
+        android:layout_y="149dp"
+        android:text="*"
+        android:visibility="invisible" />
+
+    <!-- Unidades para ángulos -->
+    <TextView
+        android:id="@+id/unidadesAngulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="293dp"
+        android:layout_y="207dp"
+        android:text="º" />
+
+    <!-- Indicador de error para campo 2 -->
+    <TextView
+        android:id="@+id/txtError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="320dp"
+        android:layout_y="207dp"
+        android:text="*"
+        android:visibility="invisible" />
+
+    <!-- Indicador de error para campo 3 -->
+    <TextView
+        android:id="@+id/txtError3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="320dp"
+        android:layout_y="265dp"
+        android:text="*"
+        android:visibility="invisible" />
+
+    <!-- Botón para volver -->
+    <Button
+        android:id="@+id/cmdVolver"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="248dp"
+        android:layout_y="379dp"
+        android:text="@string/volver" />
+
+    <!-- Botón para comprobar -->
+    <Button
+        android:id="@+id/cmdComprobar"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="109dp"
+        android:layout_y="319dp"
+        android:text="@string/comprobar" />
+
+    <!-- Texto de longitud medida -->
+    <TextView
+        android:id="@+id/txtLongitudMedida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="17dp"
+        android:layout_y="391dp"
+        android:text="@string/longitud_vano_label" />
+
+    <!-- Mensaje de error -->
+    <TextView
+        android:id="@+id/txtMensajeError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="252dp"
+        android:layout_y="306dp"
+        android:text="@string/mensaje_error"
+        android:visibility="invisible" />
+
+    <!-- Botón para vaciar campos -->
+    <Button
+        android:id="@+id/cmdVaciar"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_x="258dp"
+        android:layout_y="96dp"
+        android:text="@string/vaciar"
+        android:textSize="8dp" />
+
+    <!-- Botón de ayuda -->
+    <ImageButton
+        android:id="@+id/cmdAyuda"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_x="39dp"
+        android:layout_y="46dp"
+        android:src="@drawable/interrogacion" />
+
+    <!-- Unidades seleccionadas -->
+    <TextView
+        android:id="@+id/tvSelectedUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_units"
+        android:layout_x="50dp"
+        android:layout_y="450dp" />
+
 </AbsoluteLayout>

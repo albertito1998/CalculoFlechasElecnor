@@ -11,21 +11,27 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Light"
-        tools:targetApi="34">
+        tools:targetApi="34"
+        android:versionName="2.0">
 
-    <activity android:label="@string/app_name" android:name="firebase.app.calculoflechaselecnor.Login"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-    </activity>
-        <activity android:name="firebase.app.calculoflechaselecnor.ControladorComprobarFlecha1Vano"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.ControladorComprobarFlechas2Vanos"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.Flechar1Vano"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.Flechar2Vanos"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.CalcularAltura"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.CalcularLongitud"/>
-        <activity android:name="firebase.app.calculoflechaselecnor.AbrirAyuda"/>
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="firebase.app.calculoflechaselecnor.CalculoFlechas" />
+        <activity android:name="firebase.app.calculoflechaselecnor.ControladorComprobarFlecha1Vano" />
+        <activity android:name="firebase.app.calculoflechaselecnor.ControladorComprobarFlechas2Vanos" />
+        <activity android:name="firebase.app.calculoflechaselecnor.Flechar1Vano" />
+        <activity android:name="firebase.app.calculoflechaselecnor.Flechar2Vanos" />
+        <activity android:name="firebase.app.calculoflechaselecnor.CalcularAltura" />
+        <activity android:name="firebase.app.calculoflechaselecnor.CalcularLongitud" />
+        <activity android:name="firebase.app.calculoflechaselecnor.TermsActivity" />
+        <activity android:name="firebase.app.calculoflechaselecnor.AbrirAyuda" />
     </application>
 </manifest>
